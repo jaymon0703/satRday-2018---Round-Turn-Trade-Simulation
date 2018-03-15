@@ -1,0 +1,118 @@
+---
+title: "satRday - Round Turn Trade Simulation in txnsim()"
+author: "Jasen Mackie"
+date: "updated `r format(Sys.time(), '%d %B %Y')`"
+output: 
+  ioslides_presentation:
+    widescreen: true
+    smaller: true    
+
+keywords: quantitative trading, proprietary trading, quantitative strategy, scientific method
+subject: quantitative strategy, scientific method, monte carlo
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## R/Finance 2018
+
+https://github.com/jaymon0703/satRday-2018---Round-Turn-Trade-Simulation
+
+![](image/CFP.png)
+
+## You have a backtest, now what?
+
+![](image/t-shirt quote.png)
+
+## Why be skeptical?
+
+"A good analyst should be very skeptical of their own results, lest they lose money deploying a bad strategy" - Brian Peterson
+
+## Simulate portfolio PL
+
+- Simulate the strategy to get a sense of the distribution of possible outcomes
+
+- for example, maximum drawdowns
+
+## mcsim()
+
+![](image/lt_maxDD.png)
+
+## Simulate round turn trades
+
+- For greater transparency, simulate round turn trades (see **blotter::txnsim()**)
+- https://github.com/braverock/blotter/blob/master/R/txnsim.R
+
+## blotter::txnsim
+
+- Stylized facts
+    + percent time in market versus out
+    + ratio of duration long:short periods
+    + number of levels or layered trades observed, limited by max position
+
+- Round turn trade definition
+    + _flat.to.flat_
+    + _flat.to.reduced_
+    + _increased.to.reduced_
+    
+## Longtrend demo
+
+![](image/lt_chart.Posn.png)
+
+## Bbands demo
+
+![](image/bb_chart.Posn.png)
+
+## plot "longtrend" round turn trades using txnsim
+
+![](image/plot_lt.png)
+
+## plot "longtrend" portfolio PL using mcsim
+
+![](image/plot_lt_mcsim.png)
+
+## plot "bbands" using txnsim
+
+![](image/plot_bb.png)
+
+## Future Work
+
+- Additional simulation methodologies
+    + CSCV per Bailey and Lopez de Prado
+    + simulated or resampled market data
+    + applying stylized facts to other market data
+- Additional models for analysing likelihood of overfitting
+- Adding configurability for type of stylized fact to include in the analysis
+- Optimisation
+
+## Conclusion
+
+We believe txnsim() is a significant contribution for any analyst seeking to evaluate the question of "skill vs. luck" of
+the observed trades, or for more broadly understanding what is theoretically possible with a certain trading
+cadence and style.
+
+## Resources and References { .smaller}
+
+- Brian G. Peterson, _"Developing & Backtesting Systematic Trading Strategies"_ - http://goo.gl/na4u5d
+- Harvey, Campbell R., and Yan Liu. 2015. _"Backtesting."_ SSRN. https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2345489
+- Burns, Patrick 2006. _"Random Portfolios for Evaluating Trading Strategies."_ http://www.burns-stat.com/pages/Working/evalstrat.pdf
+- Bailey, David H, Jonathan M Borwein, Marcos Lòpez de Prado, and Qiji Jim Zhu. 2014. _"The Probability of Backtest Overfitting."_ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2326253.
+- Mackie, Jasen, Brian G. Peterson. 2018. _"Round Turn Trade Simulation - R/Finance 2018 CFP Submission."_ https://github.com/jaymon0703/satRday-2018---Round-Turn-Trade-Simulation/blob/master/Round_Turn_Trade_Simulation_FINAL.pdf
+- Tomasini, Emilio, and Urban Jaekle. 2009. _"Trading Systems: A New Approach to System Development and Portfolio Optimisation."_
+
+## Thanks
+
+- Thank you for listening
+
+- Thank you to my family
+
+- Special thanks to:
+    + Brian Peterson 
+    + Joshua Ulrich
+    + Peter Carl
+    + Jeff Ryan
+    + Dirk Eddelbuettel
+    + Ross Bennett 
+    + and many more package authors and community members
